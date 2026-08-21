@@ -182,14 +182,14 @@ export default function About() {
             <div className="glass rounded-2xl border border-white/8 p-6 space-y-3">
               <div className="flex items-center gap-2">
                 <Target className="w-5 h-5 text-accent" />
-                <h3 className="text-lg font-bold text-white">Career Goals</h3>
+                <h3 className="text-lg font-bold text-white">Professional Focus</h3>
               </div>
               <ul className="space-y-2 text-white/60 text-sm">
                 {[
-                  "Build scalable, user-centric web applications",
-                  "Contribute to impactful open-source projects",
-                  "Master full-stack development & cloud technologies",
-                  "Grow into a senior software engineer role",
+                  "Build reliable, database-backed web applications",
+                  "Support healthcare and business software solutions",
+                  "Improve usability, performance, and system reliability",
+                  "Develop expertise in DevOps and AI-powered tools",
                 ].map((goal, i) => (
                   <motion.li
                     key={i}
@@ -213,11 +213,14 @@ export default function About() {
                   "PHP",
                   "Python",
                   "MySQL",
+                  "MariaDB",
                   "CodeIgniter 4",
                   "HTML5",
                   "CSS3",
                   "JavaScript",
-                  "Tailwind CSS",
+                  "TypeScript",
+                  "DevOps",
+                  "Application Testing",
                   "Git",
                   "GitHub",
                 ].map((tech) => (

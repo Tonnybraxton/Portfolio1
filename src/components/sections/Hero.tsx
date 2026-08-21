@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown, Download, Mail, Github, MapPin } from "lucide-react";
+import { ArrowDown, Mail, Github, MapPin } from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
 import { PERSONAL_INFO, TECH_ICONS } from "@/lib/constants";
 
@@ -304,7 +304,7 @@ export default function Hero() {
             >
               <div className="w-2 h-2 rounded-full bg-success animate-pulse" />
               <MapPin className="w-3.5 h-3.5 text-accent" />
-              <span>Available for opportunities · Nairobi, Kenya</span>
+              <span>Junior Developer Intern · Nairobi, Kenya</span>
             </motion.div>
 
             {/* Main heading */}
@@ -335,11 +335,11 @@ export default function Hero() {
                 sequence={[
                   "PHP & CodeIgniter 4",
                   2000,
-                  "Python & MySQL",
+                  "TypeScript & AI Solutions",
                   2000,
-                  "HTML, CSS & JavaScript",
+                  "Python, MySQL & MariaDB",
                   2000,
-                  "Modern Web Technologies",
+                  "DevOps & Application Testing",
                   2000,
                 ]}
                 repeat={Infinity}
@@ -375,14 +375,13 @@ export default function Hero() {
               </motion.button>
 
               <motion.a
-                href="/cv.pdf"
-                download
+                href={`mailto:${PERSONAL_INFO.email}?subject=CV%20Request`}
                 className="group flex items-center gap-2 px-7 py-3.5 rounded-2xl glass border border-white/15 text-white/90 font-semibold text-base hover:border-primary/50 hover:text-white transition-all duration-300"
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
               >
-                <Download className="w-4 h-4 group-hover:animate-bounce" />
-                Download CV
+                <Mail className="w-4 h-4" />
+                Request CV
               </motion.a>
 
               <motion.button
@@ -411,7 +410,7 @@ export default function Hero() {
                 whileHover={{ x: 4 }}
               >
                 <Github className="w-4 h-4" />
-                <span>@Tonnybraxton</span>
+                <span>@{PERSONAL_INFO.githubUsername}</span>
               </motion.a>
               <div className="w-1 h-1 rounded-full bg-white/20" />
               <span className="text-white/30 text-sm">
@@ -437,8 +436,8 @@ export default function Hero() {
                   🚀
                 </div>
                 <div>
-                  <p className="text-xs text-white/40">Status</p>
-                  <p className="text-sm font-semibold text-success">Available to work</p>
+                  <p className="text-xs text-white/40">Current Role</p>
+                  <p className="text-sm font-semibold text-success">Junior Developer Intern</p>
                 </div>
               </div>
             </motion.div>
@@ -455,7 +454,7 @@ export default function Hero() {
                 <div>
                   <p className="text-xs text-white/40">Current Focus</p>
                   <p className="text-sm font-semibold gradient-text">
-                    Full Stack Dev
+                    Healthcare & Web Apps
                   </p>
                 </div>
               </div>
