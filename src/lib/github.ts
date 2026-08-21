@@ -56,7 +56,7 @@ function getHeaders(): HeadersInit {
 export async function fetchGitHubProfile(): Promise<GitHubProfile> {
   const res = await fetch(`${GITHUB_API}/users/${USERNAME}`, {
     headers: getHeaders(),
-    next: { revalidate: 3600 },
+    next: { revalidate: 300 },
   });
   if (!res.ok) throw new Error(`Failed to fetch GitHub profile: ${res.status}`);
   return res.json();
@@ -67,7 +67,7 @@ export async function fetchGitHubRepos(): Promise<GitHubRepo[]> {
     `${GITHUB_API}/users/${USERNAME}/repos?sort=updated&per_page=100&type=owner`,
     {
       headers: getHeaders(),
-      next: { revalidate: 3600 },
+      next: { revalidate: 300 },
     }
   );
   if (!res.ok) throw new Error(`Failed to fetch GitHub repos: ${res.status}`);

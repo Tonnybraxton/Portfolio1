@@ -241,7 +241,7 @@ export default function GitHubSection() {
             <span className="gradient-text-alt">Presence</span>
           </h2>
           <p className="text-white/50 max-w-xl mx-auto text-lg">
-            Live data from GitHub — updated every hour.
+            Live data and project descriptions from GitHub — refreshed every five minutes.
           </p>
         </motion.div>
 
