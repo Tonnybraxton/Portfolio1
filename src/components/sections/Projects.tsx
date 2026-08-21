@@ -217,7 +217,7 @@ export default function Projects() {
             <span className="gradient-text">Ship Value</span>
           </h2>
           <p className="text-white/50 max-w-2xl mx-auto text-lg">
-            Real-world applications built with passion, precision, and purpose.
+            Five featured projects from my CV and GitHub. Browse every repository in the GitHub section below.
           </p>
         </motion.div>
 
