@@ -22,11 +22,17 @@ const CursorGlow = dynamic(
   { ssr: false }
 );
 
+const FishCursor = dynamic(
+  () => import("@/components/ui/FishCursor"),
+  { ssr: false }
+);
+
 export default function Home() {
   return (
     <main className="relative min-h-screen bg-[#0F172A] overflow-x-hidden">
       {/* Cursor glow effect */}
       <CursorGlow />
+      <FishCursor />
 
       {/* Navigation */}
       <Navbar />
