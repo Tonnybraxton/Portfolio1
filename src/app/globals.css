@@ -193,6 +193,16 @@ body {
   0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
   50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
 }
+@keyframes fishTailSwim {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-13deg); }
+}
+
+.fish-cursor-tail {
+  transform-box: fill-box;
+  transform-origin: right center;
+  animation: fishTailSwim 0.55s ease-in-out infinite;
+}
 
 /* Particle dots */
 .particle {
