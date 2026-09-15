@@ -1,111 +1,35 @@
-# Maaka Braxton Orioki — Portfolio Website
+# Portfolio1
 
-A world-class personal portfolio website built with **Next.js 15**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
+Configuration scaffold for a personal portfolio website using Next.js, TypeScript, Tailwind CSS, and Framer Motion.
 
-## 🚀 Features
+## Current state
 
-- **Ultra-modern UI** — Glassmorphism, floating gradients, mouse-glow effects
-- **Animated sections** — Hero particles, typewriter, 3D tilt cards, skill bars
-- **GitHub integration** — Live repos, stats, language distribution (cached hourly)
-- **Dark mode** — Sleek `#0F172A` dark-mode-first design
-- **Mobile responsive** — Optimized for all screen sizes
-- **SEO optimized** — Metadata, Open Graph, sitemap, robots.txt
-- **Performance** — Dynamic imports, image optimization, ISR caching
+This repository contains dependency manifests, framework configuration, and an environment-file example. The portfolio application source is not included: there is no `src`, `app`, or `pages` directory. A working website, screenshots, or live demo are not available from this checkout.
 
-## 🛠️ Tech Stack
+## Included files
 
-| Technology | Purpose |
-|------------|---------|
-| Next.js 15 | Framework + SSR/SSG |
-| TypeScript | Type safety |
-| Tailwind CSS | Styling |
-| Framer Motion | Animations |
-| Lucide Icons | Iconography |
-| GitHub API | Live repository data |
-| next/font | Google Fonts (Inter, JetBrains Mono) |
+- [package.json](package.json) and the npm lockfile describe the intended dependencies and scripts.
+- [next.config.ts](next.config.ts) contains the Next.js configuration.
+- [tailwind.config.ts](tailwind.config.ts) and [postcss.config.js](postcss.config.js) configure styling.
+- [.env.local.example](.env.local.example) lists the intended environment configuration.
 
-## 📁 Project Structure
+## Intended direction
 
-```
-src/
-├── app/
-│   ├── layout.tsx          # Root layout, SEO metadata
-│   ├── page.tsx            # Main page
-│   ├── globals.css         # Global styles
-│   ├── sitemap.ts          # Auto-generated sitemap
-│   ├── robots.ts           # Robots.txt
-│   └── api/github/         # GitHub API proxy route
-├── components/
-│   ├── sections/
-│   │   ├── Hero.tsx        # Full-screen hero
-│   │   ├── About.tsx       # About + stats + timeline
-│   │   ├── Skills.tsx      # Skills with bars + rings
-│   │   ├── Experience.tsx  # Work experience timeline
-│   │   ├── Projects.tsx    # Project cards with 3D tilt
-│   │   ├── GitHub.tsx      # Live GitHub data
-│   │   └── Contact.tsx     # Contact form
-│   └── ui/
-│       ├── Navbar.tsx      # Sticky glassmorphic navbar
-│       ├── Footer.tsx      # Footer with back-to-top
-│       └── CursorGlow.tsx  # Mouse-following glow
-└── lib/
-    ├── constants.ts        # All personal data
-    ├── github.ts           # GitHub API utilities
-    └── utils.ts            # Helper functions
-```
+The original project plan describes a personal introduction, skills, project showcase, contact section, and GitHub repository integration. These remain planned features until the application source is restored or implemented.
 
-## ⚡ Getting Started
+## Continuing development
 
-### Prerequisites
-- Node.js 18+
-- npm or yarn
+1. Restore or implement the application entry points and components.
+2. Install dependencies with `npm ci` using a Node.js version compatible with the pinned Next.js version.
+3. Configure any required local environment values.
+4. Run and verify the development server and production build before publishing a demo.
 
-### Installation
+Installing dependencies alone will not produce a working portfolio while the source files are missing.
 
-```bash
-# Install dependencies
-npm install
+## Contributing
 
-# Start development server
-npm run dev
-```
+Open an issue describing the source or feature you intend to restore. Include screenshots and verification commands once the application can run.
 
-Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
+## License
 
-### Build for Production
-
-```bash
-npm run build
-npm start
-```
-
-## 🌐 Deployment
-
-### Vercel (Recommended)
-
-```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Deploy
-vercel
-```
-
-### Environment Variables (Optional)
-
-Create `.env.local` for a GitHub token to increase API rate limits:
-
-```env
-GITHUB_TOKEN=your_github_personal_access_token
-```
-
-## 📞 Contact
-
-**Maaka Braxton Orioki**
-- 📧 [braxtonmaaka1@gmail.com](mailto:braxtonmaaka1@gmail.com)
-- 🐙 [github.com/Tonnybraxton](https://github.com/Tonnybraxton)
-- 📍 Nairobi, Kenya
-
----
-
-Built with ❤️ in Nairobi · © 2024 Maaka Braxton Orioki
+No project license file is currently included.
