@@ -20,7 +20,7 @@ A personal portfolio website built with **Next.js 16**, **TypeScript**, **Tailwi
 
 | Technology | Purpose |
 |------------|---------|
-| Next.js 15 | Framework + SSR/SSG |
+| Next.js 16 | Framework + SSR/SSG |
 | TypeScript | Type safety |
 | Tailwind CSS | Styling |
 | Framer Motion | Animations |
