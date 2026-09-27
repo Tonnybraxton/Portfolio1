@@ -65,8 +65,8 @@ function CodeWindow() {
     { indent: 1, content: 'name = "Maaka Braxton"', color: "text-green-400" },
     { indent: 1, content: 'location = "Nairobi, Kenya"', color: "text-cyan-400" },
     { indent: 1, content: "skills = [", color: "text-white/70" },
-    { indent: 2, content: '"PHP", "Python",', color: "text-yellow-400" },
-    { indent: 2, content: '"MySQL", "CodeIgniter"', color: "text-yellow-400" },
+    { indent: 2, content: '"Python", "TypeScript",', color: "text-yellow-400" },
+    { indent: 2, content: '"Django", "Next.js"', color: "text-yellow-400" },
     { indent: 1, content: "]", color: "text-white/70" },
     { indent: 0, content: "", color: "" },
     { indent: 0, content: "def build_solutions(self):", color: "text-purple-400" },
@@ -333,13 +333,13 @@ export default function Hero() {
               <span className="text-white/50">I build with </span>
               <TypeAnimation
                 sequence={[
-                  "PHP & CodeIgniter 4",
+                  "React & Next.js",
                   2000,
-                  "TypeScript & AI Solutions",
+                  "Python, Django & FastAPI",
                   2000,
-                  "Python, MySQL & MariaDB",
+                  "PostgreSQL & AI Search",
                   2000,
-                  "DevOps & Application Testing",
+                  "TypeScript & Automated Tests",
                   2000,
                 ]}
                 repeat={Infinity}
@@ -454,7 +454,7 @@ export default function Hero() {
                 <div>
                   <p className="text-xs text-white/40">Current Focus</p>
                   <p className="text-sm font-semibold gradient-text">
-                    Healthcare & Web Apps
+                    AI Search & Web Apps
                   </p>
                 </div>
               </div>

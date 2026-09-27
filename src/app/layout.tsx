@@ -15,9 +15,10 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://maaka-portfolio.vercel.app"),
   title: "Maaka Braxton Orioki | Junior Developer & IT Professional",
   description:
-    "Portfolio of Maaka Braxton Orioki — Junior Developer with experience in healthcare and business software, PHP, Python, MySQL, CodeIgniter 4, TypeScript, testing, and DevOps practices.",
+    "Portfolio of Maaka Braxton Orioki — developer in Nairobi building with React, Next.js, Django, FastAPI, PostgreSQL, AI document search, and automated testing.",
   keywords: [
     "Maaka Braxton Orioki",
     "Software Developer",
@@ -29,6 +30,12 @@ export const metadata: Metadata = {
     "KCA University",
     "CodeIgniter",
     "MySQL",
+    "React",
+    "Next.js",
+    "Django",
+    "FastAPI",
+    "PostgreSQL",
+    "AI Document Search",
     "Portfolio",
   ],
   authors: [{ name: "Maaka Braxton Orioki" }],
@@ -39,7 +46,7 @@ export const metadata: Metadata = {
     url: "https://maaka-portfolio.vercel.app",
     title: "Maaka Braxton Orioki | Software Developer",
     description:
-      "Junior Developer from Nairobi, Kenya building reliable healthcare and business web applications with PHP, Python, MySQL, CodeIgniter, and TypeScript.",
+      "Developer in Nairobi building web applications with React, Next.js, Django, FastAPI, PostgreSQL, and AI document search.",
     siteName: "Maaka Braxton Orioki Portfolio",
     images: [
       {
@@ -54,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Maaka Braxton Orioki | Software Developer",
     description:
-      "Junior Developer from Nairobi, Kenya building reliable healthcare and business web applications.",
+      "Developer in Nairobi building web applications, document search with AI, and tested backend APIs.",
     images: ["/og-image.png"],
   },
   robots: {

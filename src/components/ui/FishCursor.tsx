@@ -8,7 +8,7 @@ export default function FishCursor() {
   const fishRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!window.matchMedia("(pointer: fine)").matches || !fishRef.current) return;
+    if (!window.matchMedia("(min-width: 1024px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)").matches || !fishRef.current) return;
 
     let pointerX = window.innerWidth / 2;
     let pointerY = window.innerHeight / 2;
@@ -27,6 +27,9 @@ export default function FishCursor() {
     const handlePointerMove = (event: PointerEvent) => {
       if (event.pointerType !== "mouse") return;
 
+      const overControl = event.target instanceof Element && event.target.closest("a, button, input, textarea, select");
+      fishRef.current?.style.setProperty("opacity", overControl ? "0" : "1");
+
       const movementX = event.clientX - pointerX;
       const movementY = event.clientY - pointerY;
       if (Math.abs(movementX) + Math.abs(movementY) > 1) {
@@ -44,7 +47,7 @@ export default function FishCursor() {
         x = targetX;
         y = targetY;
         hasMoved = true;
-        fishRef.current?.style.setProperty("opacity", "1");
+
       }
     };
 
@@ -83,7 +86,7 @@ export default function FishCursor() {
       }
 
       if (fishRef.current) {
-        fishRef.current.style.transform = `translate3d(${x - 43}px, ${y - 32}px, 0) rotate(${angle}deg)`;
+        fishRef.current.style.transform = `translate3d(${x - 24}px, ${y - 18}px, 0) rotate(${angle}deg)`;
       }
 
       animationFrame = requestAnimationFrame(animate);
@@ -102,10 +105,10 @@ export default function FishCursor() {
     <div
       ref={fishRef}
       aria-hidden="true"
-      className="pointer-events-none fixed left-0 top-0 z-[60] opacity-0 motion-reduce:hidden"
+      className="hidden lg:block pointer-events-none fixed left-0 top-0 z-[60] opacity-0 motion-reduce:hidden"
       style={{ willChange: "transform, opacity" }}
     >
-      <svg width="86" height="64" viewBox="0 0 120 90" fill="none">
+      <svg width="48" height="36" viewBox="0 0 120 90" fill="none">
         <defs>
           <linearGradient id="cursor-fish-body" x1="29" y1="20" x2="110" y2="69" gradientUnits="userSpaceOnUse">
             <stop stopColor="#38BDF8" />

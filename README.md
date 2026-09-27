@@ -1,6 +1,10 @@
 # Maaka Braxton Orioki — Portfolio Website
 
-A world-class personal portfolio website built with **Next.js 15**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
+A personal portfolio website built with **Next.js 16**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
+
+## Preview
+
+![Maaka Braxton Orioki portfolio homepage](docs/screenshots/portfolio-desktop.png)
 
 ## 🚀 Features
 

@@ -1,253 +1,114 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import {
-  ExternalLink,
-  Github,
-  ArrowUpRight,
-  Code,
-} from "lucide-react";
-import { PROJECTS } from "@/lib/constants";
+import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
+import { useState } from "react";
+import { Github, ArrowUpRight, Check, ImageIcon } from "lucide-react";
+import { PROJECTS, PERSONAL_INFO } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
-function ProjectCard({
-  project,
-  index,
-}: {
-  project: (typeof PROJECTS)[0];
-  index: number;
-}) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-  const [hovered, setHovered] = useState(false);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    setTilt({ x: y * 8, y: -x * 8 });
-  };
-
-  const handleMouseLeave = () => {
-    setTilt({ x: 0, y: 0 });
-    setHovered(false);
-  };
+function ProjectCard({ project }: { project: (typeof PROJECTS)[number] }) {
+  const [imageFailed, setImageFailed] = useState(false);
+  const reduceMotion = useReducedMotion();
 
   return (
-    <motion.div
-      ref={ref}
-      className="relative group"
-      initial={{ opacity: 0, y: 40 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.15 }}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        transformStyle: "preserve-3d",
-        transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
-        transition: hovered ? "transform 0.1s ease" : "transform 0.5s ease",
-      }}
+    <motion.a
+      href={project.github}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`View ${project.title} on GitHub (opens in a new tab)`}
+      whileHover={reduceMotion ? undefined : { y: -5 }}
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#141F32] shadow-lg transition-colors hover:border-cyan-400/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-[#0F172A]"
     >
-      {/* Glow effect */}
-      <motion.div
-        className={`absolute -inset-1 rounded-2xl bg-gradient-to-br ${project.gradient} opacity-0 blur-xl transition-opacity duration-500`}
-        animate={{ opacity: hovered ? 0.25 : 0 }}
-      />
-
-      <div className="relative glass rounded-2xl border border-white/10 overflow-hidden hover:border-white/20 transition-all duration-300 h-full flex flex-col">
-        {/* Header banner */}
-        <div
-          className={`relative h-44 bg-gradient-to-br ${project.gradient} p-6 overflow-hidden`}
-        >
-          {/* Grid pattern overlay */}
-          <div
-            className="absolute inset-0 opacity-20"
-            style={{
-              backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-              backgroundSize: "20px 20px",
-            }}
-          />
-
-          <div className="relative z-10 flex items-start justify-between">
-            <div>
-              <div className="text-4xl mb-2">{project.icon}</div>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/30 text-xs text-white/80 font-medium">
-                <Code className="w-3 h-3" />
-                {project.category}
-              </div>
-            </div>
-
-            <div className="flex gap-2">
-              <motion.a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-xl bg-black/30 flex items-center justify-center text-white hover:bg-black/50 transition-colors"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={(e) => e.stopPropagation()}
-              >
-                <Github className="w-4 h-4" />
-              </motion.a>
-              {project.live && (
-                <motion.a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-9 h-9 rounded-xl bg-black/30 flex items-center justify-center text-white hover:bg-black/50 transition-colors"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <ExternalLink className="w-4 h-4" />
-                </motion.a>
-              )}
-            </div>
+      <div className="relative w-full shrink-0 aspect-[16/10] overflow-hidden bg-slate-900 border-b border-white/10">
+        {imageFailed ? (
+          <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} flex flex-col items-center justify-center gap-3 px-6 text-center`}>
+            <Github className="w-10 h-10 text-white/80" aria-hidden="true" />
+            <span className="text-lg font-bold text-white">{project.title}</span>
+            <span className="text-xs text-white/75">Explore the repository on GitHub</span>
           </div>
-
-          {/* Decorative circles */}
-          <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-full bg-white/10" />
-          <div className="absolute -bottom-10 -right-10 w-48 h-48 rounded-full bg-white/5" />
-        </div>
-
-        {/* Content */}
-        <div className="p-6 flex-1 flex flex-col gap-4">
-          <div>
-            <h3 className="text-xl font-bold text-white group-hover:gradient-text transition-all duration-300 mb-2">
-              {project.title}
-            </h3>
-            <p className="text-white/60 text-sm leading-relaxed">
-              {project.description}
-            </p>
-          </div>
-
-          {/* Features */}
-          <div className="space-y-1.5">
-            {project.features.slice(0, 3).map((feature, i) => (
-              <div key={i} className="flex items-start gap-2 text-xs text-white/50">
-                <span className="text-success mt-0.5 shrink-0">✓</span>
-                <span>{feature}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Tech stack */}
-          <div className="flex flex-wrap gap-2 mt-auto">
-            {project.tech.map((tech) => (
-              <span
-                key={tech}
-                className="px-2.5 py-1 text-xs font-mono rounded-lg bg-white/5 border border-white/10 text-white/60 hover:text-white hover:border-white/25 transition-all duration-200"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-
-          {/* CTA row */}
-          <div className="flex gap-3 pt-2 border-t border-white/5">
-            <motion.a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold bg-gradient-to-r ${project.gradient} text-white`}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              <Github className="w-4 h-4" />
-              View Code
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </motion.a>
-            {project.live ? (
-              <motion.a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2.5 rounded-xl glass border border-white/15 text-white/80 text-sm font-semibold flex items-center gap-1.5"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.97 }}
-              >
-                <ExternalLink className="w-4 h-4" />
-                Live
-              </motion.a>
-            ) : (
-              <div className="px-4 py-2.5 rounded-xl glass border border-white/8 text-white/30 text-sm font-semibold flex items-center gap-1.5 cursor-not-allowed">
-                Soon
-              </div>
+        ) : (
+          <Image
+            src={project.image}
+            alt={project.imageAlt}
+            fill
+            unoptimized
+            sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
+            className={cn(
+              "transition-transform duration-500 motion-reduce:transition-none group-hover:scale-[1.025]",
+              project.imageLabel === "App screenshot" ? "object-cover object-top" : "object-contain"
             )}
-          </div>
+            onError={() => setImageFailed(true)}
+          />
+        )}
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-slate-950/80 to-transparent pointer-events-none" />
+        <span className="absolute bottom-3 left-4 inline-flex items-center gap-1.5 text-[11px] font-medium text-white/90">
+          <ImageIcon className="w-3.5 h-3.5" aria-hidden="true" />
+          {imageFailed ? "GitHub project" : project.imageLabel}
+        </span>
+        <span className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-slate-950/75 text-white backdrop-blur-sm group-hover:bg-cyan-600 transition-colors">
+          <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+        </span>
+      </div>
+
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <span className="mb-3 self-start rounded-full border border-cyan-400/15 bg-cyan-400/5 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-cyan-300">
+          {project.category}
+        </span>
+        <h3 className="text-xl font-bold leading-snug text-white group-hover:text-cyan-300 transition-colors">{project.title}</h3>
+        <p className="mt-3 text-sm leading-relaxed text-slate-400">{project.description}</p>
+        <ul className="mt-5 space-y-2">
+          {project.features.slice(0, 3).map((feature) => (
+            <li key={feature} className="flex items-start gap-2 text-xs leading-relaxed text-slate-400">
+              <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-400" aria-hidden="true" />
+              {feature}
+            </li>
+          ))}
+        </ul>
+        <div className="mt-auto pt-5 flex flex-wrap gap-1.5">
+          {project.tech.map((tech) => (
+            <span key={tech} className="rounded-md bg-white/5 border border-white/10 px-2 py-1 text-[11px] font-medium text-slate-300">{tech}</span>
+          ))}
+        </div>
+        <div className="mt-5 flex min-h-11 items-center justify-between gap-2 border-t border-white/10 pt-4 text-sm font-semibold text-white group-hover:text-cyan-300">
+          <span className="inline-flex items-center gap-2"><Github className="h-4 w-4" aria-hidden="true" />View on GitHub</span>
+          <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
         </div>
       </div>
-    </motion.div>
+    </motion.a>
   );
 }
 
 export default function Projects() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const [category, setCategory] = useState("All projects");
+  const categories = ["All projects", ...Array.from(new Set(PROJECTS.map((project) => project.category)))];
+  const projects = category === "All projects" ? PROJECTS : PROJECTS.filter((project) => project.category === category);
 
   return (
-    <section id="projects" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-5"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(59,130,246,0.8) 0%, transparent 70%)",
-          }}
-        />
-      </div>
-
+    <section id="projects" className="py-20 sm:py-24 relative scroll-mt-24">
       <div className="section-container">
-        {/* Header */}
-        <motion.div
-          ref={ref}
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass border border-white/10 text-sm text-accent mb-4">
-            <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-            Featured Work
+        <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-2xl">
+            <p className="text-sm font-semibold text-accent mb-3">Selected work</p>
+            <h2 className="text-4xl sm:text-5xl font-black text-white leading-tight">Ideas into <span className="gradient-text">Applications</span></h2>
+            <p className="mt-4 text-base sm:text-lg leading-relaxed text-slate-400">Explore my work in AI, commerce, and web development. Open any project to see its code and documentation on GitHub.</p>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
-            Projects That{" "}
-            <span className="gradient-text">Ship Value</span>
-          </h2>
-          <p className="text-white/50 max-w-2xl mx-auto text-lg">
-            Five featured projects from my CV and GitHub. Browse every repository in the GitHub section below.
-          </p>
-        </motion.div>
-
-        {/* Project grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {PROJECTS.map((project, i) => (
-            <ProjectCard key={project.id} project={project} index={i} />
-          ))}
+          <a href={`${PERSONAL_INFO.github}?tab=repositories`} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 self-start items-center gap-2 rounded-xl border border-white/15 px-4 py-3 text-sm font-semibold text-white hover:border-accent/50 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+            <Github className="w-4 h-4" aria-hidden="true" />All repositories<ArrowUpRight className="w-4 h-4" aria-hidden="true" />
+          </a>
         </div>
 
-        {/* Footer CTA */}
-        <motion.div
-          className="text-center mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.6 }}
-        >
-          <motion.a
-            href="https://github.com/Tonnybraxton"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl glass border border-white/15 text-white/80 hover:text-white hover:border-primary/50 transition-all duration-300 font-medium"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-          >
-            <Github className="w-5 h-5" />
-            View All Projects on GitHub
-            <ArrowUpRight className="w-4 h-4" />
-          </motion.a>
-        </motion.div>
+        <div className="flex flex-wrap gap-2 mb-5" role="group" aria-label="Filter projects">
+          {categories.map((item) => (
+            <button key={item} type="button" aria-pressed={category === item} aria-controls="project-grid" onClick={() => setCategory(item)} className={cn("min-h-11 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent", category === item ? "bg-cyan-400 text-slate-950" : "bg-white/5 text-slate-300 border border-white/10 hover:border-white/30 hover:text-white")}>
+              {item}
+            </button>
+          ))}
+        </div>
+        <p className="mb-6 text-xs text-slate-400" role="status" aria-live="polite">Showing {projects.length} of {PROJECTS.length} projects</p>
+        <div id="project-grid" className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {projects.map((project) => <ProjectCard key={project.id} project={project} />)}
+        </div>
       </div>
     </section>
   );

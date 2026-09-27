@@ -8,6 +8,7 @@ import {
   STATS,
   EDUCATION,
   CERTIFICATIONS,
+  SKILLS,
 } from "@/lib/constants";
 
 function AnimatedCounter({
@@ -187,9 +188,9 @@ export default function About() {
               <ul className="space-y-2 text-white/60 text-sm">
                 {[
                   "Build reliable, database-backed web applications",
-                  "Support healthcare and business software solutions",
+                  "Build document search and question answering with source citations",
                   "Improve usability, performance, and system reliability",
-                  "Develop expertise in DevOps and AI-powered tools",
+                  "Test APIs and user journeys with pytest, Vitest, and Playwright",
                 ].map((goal, i) => (
                   <motion.li
                     key={i}
@@ -209,21 +210,7 @@ export default function About() {
             <div className="glass rounded-2xl border border-white/8 p-6 space-y-3">
               <h3 className="text-lg font-bold text-white">Tech Snapshot</h3>
               <div className="flex flex-wrap gap-2">
-                {[
-                  "PHP",
-                  "Python",
-                  "MySQL",
-                  "MariaDB",
-                  "CodeIgniter 4",
-                  "HTML5",
-                  "CSS3",
-                  "JavaScript",
-                  "TypeScript",
-                  "DevOps",
-                  "Application Testing",
-                  "Git",
-                  "GitHub",
-                ].map((tech) => (
+                {Object.values(SKILLS).flat().map((skill) => skill.name).map((tech) => (
                   <motion.span
                     key={tech}
                     className="px-3 py-1.5 text-xs font-mono rounded-full glass border border-white/10 text-white/70 hover:border-primary/40 hover:text-white transition-all duration-300 cursor-default"

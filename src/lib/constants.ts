@@ -9,10 +9,10 @@ export const PERSONAL_INFO = {
   phone: "0791677818",
   github: "https://github.com/Tonnybraxton",
   githubUsername: "Tonnybraxton",
-  bio: "Motivated Information Technology professional with practical experience in software development, application support, system testing, troubleshooting, documentation, and DevOps practices. I build reliable, database-backed web solutions and contribute to healthcare and business software projects.",
+  bio: "I am a developer and IT professional in Nairobi building web applications with Python, TypeScript, and PHP. My recent projects span document search with AI, a Django banking demo, e-commerce, and interactive learning tools. I work across React interfaces, backend APIs, relational databases, and automated tests.",
   tagline: "Building Reliable Digital Solutions That Matter",
   subTagline:
-    "Junior Developer at Memey.AI with hands-on experience in PHP, Python, MySQL, CodeIgniter 4, TypeScript, and web application development.",
+    "Junior Developer at Memey.AI building with React, Next.js, Django, and FastAPI. Recent projects explore AI document search, PostgreSQL, and automated testing.",
 };
 
 // Education
@@ -40,42 +40,119 @@ export const CERTIFICATIONS = [
   },
 ];
 
-// Stats
-export const STATS = [
-  { label: "Featured Projects", value: 5, suffix: "" },
-  { label: "GitHub Repositories", value: 17, suffix: "" },
-  { label: "Professional Internships", value: 2, suffix: "" },
-  { label: "Core Technologies", value: 14, suffix: "+" },
-];
-
-// Skills
+// Skills demonstrated in project code and documentation reviewed September 2026.
+// Each category links to a repository where visitors can explore the work.
 export const SKILLS = {
   Frontend: [
-    { name: "HTML5", level: 90, color: "#E34F26" },
-    { name: "CSS3", level: 85, color: "#1572B6" },
-    { name: "JavaScript", level: 75, color: "#F7DF1E" },
-    { name: "TypeScript", level: 75, color: "#3178C6" },
-    { name: "Form Validation & UI Design", level: 80, color: "#06B6D4" },
+    { name: "React & Next.js", detail: "Responsive interfaces, routing, and reusable components." },
+    { name: "TypeScript & JavaScript", detail: "Typed application code across web clients and APIs." },
+    { name: "Tailwind CSS & Bootstrap", detail: "Responsive layouts, forms, and reusable UI styling." },
+    { name: "React Query & React Hook Form", detail: "Server data, form state, and Zod validation." },
+    { name: "HTML & CSS", detail: "Semantic pages, layouts, and storefront interfaces." },
   ],
   Backend: [
-    { name: "PHP", level: 85, color: "#777BB4" },
-    { name: "Python", level: 80, color: "#3776AB" },
-    { name: "CodeIgniter 4", level: 75, color: "#EF4223" },
+    { name: "Python, Django & FastAPI", detail: "Account workflows, document APIs, and request validation." },
+    { name: "Node.js & Express", detail: "APIs for accounts, game sessions, and saved progress." },
+    { name: "PHP & CodeIgniter 4", detail: "Business applications and marketplace workflows." },
+    { name: "Authentication & Permissions", detail: "Staff permissions, cookie sessions, and workspace boundaries." },
   ],
   Database: [
-    { name: "MySQL", level: 85, color: "#4479A1" },
-    { name: "MariaDB", level: 75, color: "#003545" },
+    { name: "PostgreSQL & SQLite", detail: "Relational data for commerce, documents, and banking demos." },
+    { name: "MySQL & MariaDB", detail: "Database-backed PHP applications and business records." },
+    { name: "SQLAlchemy, Prisma & Django ORM", detail: "Data models, queries, constraints, and migrations." },
+    { name: "Transactions & Data Integrity", detail: "Atomic balance updates, validation, and audit records." },
+  ],
+  "AI & Search": [
+    { name: "Retrieval-Augmented Generation", detail: "Document question answering with retrieved passages and citations." },
+    { name: "Embeddings & pgvector", detail: "Semantic search over stored document chunks." },
+    { name: "Hybrid Search", detail: "Combine PostgreSQL keyword search with vector similarity." },
+    { name: "Document Processing", detail: "Extract and index PDF, DOCX, Markdown, and text content." },
+  ],
+  Testing: [
+    { name: "pytest", detail: "Backend tests for validation, permissions, and transactions." },
+    { name: "Vitest & Testing Library", detail: "Unit, component, and API tests for TypeScript applications." },
+    { name: "Playwright", detail: "Browser checks for user journeys on desktop and mobile." },
+    { name: "GitHub Actions", detail: "CI workflows for linting, type checks, builds, and tests." },
   ],
   Tools: [
-    { name: "Git", level: 80, color: "#F05032" },
-    { name: "GitHub", level: 85, color: "#181717" },
-    { name: "DevOps: Deployment & Monitoring", level: 70, color: "#007ACC" },
-    { name: "Application Testing & Debugging", level: 85, color: "#A855F7" },
+    { name: "Git & GitHub", detail: "Version control, repository documentation, and review workflows." },
+    { name: "Docker Compose", detail: "Local stack configuration for applications and their services." },
+    { name: "Redis & Background Jobs", detail: "Queues for document ingestion and asynchronous processing." },
+    { name: "S3-Compatible Storage", detail: "Private document storage with an S3 service interface." },
   ],
+};
+
+export const SKILL_EVIDENCE: Record<keyof typeof SKILLS, { project: string; url: string; summary: string; color: string }> = {
+  Frontend: { project: "SOLELINE", url: "https://github.com/Tonnybraxton/Shoes", summary: "A Next.js storefront with product filters, size selection, shopping bags, and account screens.", color: "#38BDF8" },
+  Backend: { project: "PesaFlow", url: "https://github.com/Tonnybraxton/banking-transaction-interface", summary: "A Django banking demo with staff permissions, validated account operations, and transaction receipts.", color: "#A78BFA" },
+  Database: { project: "PesaFlow", url: "https://github.com/Tonnybraxton/banking-transaction-interface/blob/main/banking/services.py", summary: "Atomic deposits, withdrawals, and transfers pair balance changes with ledger entries.", color: "#34D399" },
+  "AI & Search": { project: "KnowledgePilot AI", url: "https://github.com/Tonnybraxton/knowledgepilot-ai", summary: "Upload documents, search by meaning or keyword, and inspect the passages cited in a conversation.", color: "#22D3EE" },
+  Testing: { project: "MindForge", url: "https://github.com/Tonnybraxton/mindforge", summary: "Unit and API tests sit alongside Playwright journeys for puzzle and typing workflows.", color: "#FBBF24" },
+  Tools: { project: "KnowledgePilot AI", url: "https://github.com/Tonnybraxton/knowledgepilot-ai/blob/main/docker-compose.yml", summary: "Compose configuration connects the frontend, API, worker, PostgreSQL, Redis, and private storage.", color: "#FB923C" },
 };
 
 // Projects
 export const PROJECTS = [
+  {
+    id: 6,
+    title: "KnowledgePilot AI",
+    description: "A private document workspace for uploading files, searching their content, and asking questions with references to source passages.",
+    features: ["Semantic and keyword search with pgvector", "Document chat with source citations", "Background ingestion and workspace permissions"],
+    tech: ["Next.js", "FastAPI", "PostgreSQL", "pgvector", "Redis"],
+    github: "https://github.com/Tonnybraxton/knowledgepilot-ai",
+    image: "https://raw.githubusercontent.com/Tonnybraxton/knowledgepilot-ai/main/docs/screenshots/02-dashboard.png",
+    imageAlt: "KnowledgePilot AI document workspace dashboard",
+    imageLabel: "App screenshot",
+    live: null,
+    gradient: "from-cyan-600 to-blue-600",
+    icon: "📚",
+    category: "AI & Search",
+  },
+  {
+    id: 7,
+    title: "PesaFlow Banking Demo",
+    description: "An educational Django application for staff-operated accounts, deposits, withdrawals, transfers, and demo loans using fictional records.",
+    features: ["Atomic balance updates and audit receipts", "Staff permissions and input validation", "pytest coverage of transaction workflows"],
+    tech: ["Python", "Django", "SQLite", "Bootstrap", "pytest"],
+    github: "https://github.com/Tonnybraxton/banking-transaction-interface",
+    image: "https://raw.githubusercontent.com/Tonnybraxton/banking-transaction-interface/main/docs/screenshots/dashboard.png",
+    imageAlt: "PesaFlow banking dashboard with fictional demo accounts",
+    imageLabel: "App screenshot",
+    live: null,
+    gradient: "from-emerald-600 to-teal-500",
+    icon: "🏦",
+    category: "Banking Demo",
+  },
+  {
+    id: 8,
+    title: "SOLELINE Storefront",
+    description: "A shoe commerce demo pairing a responsive Next.js storefront with Django and PostgreSQL, from product discovery to simulated checkout.",
+    features: ["Catalogue filters, colourways, and size stock", "Inventory reservations and customer orders", "Unit, API, and browser tests"],
+    tech: ["Next.js", "React", "Django", "PostgreSQL", "Playwright"],
+    github: "https://github.com/Tonnybraxton/Shoes",
+    image: "https://raw.githubusercontent.com/Tonnybraxton/Shoes/main/docs/screenshots/storefront-preview.png",
+    imageAlt: "SOLELINE shoe storefront",
+    imageLabel: "App screenshot",
+    live: null,
+    gradient: "from-orange-600 to-rose-500",
+    icon: "👟",
+    category: "E-Commerce",
+  },
+  {
+    id: 9,
+    title: "MindForge",
+    description: "A puzzle and typing practice application with local guest play, saved progress, and an Express API for connected accounts.",
+    features: ["Interactive puzzles and Typing Academy", "PostgreSQL accounts and validated game replays", "Vitest and Playwright test suites"],
+    tech: ["React", "TypeScript", "Express", "Prisma", "PostgreSQL"],
+    github: "https://github.com/Tonnybraxton/mindforge",
+    image: "https://raw.githubusercontent.com/Tonnybraxton/mindforge/main/docs/screenshots/overview.png",
+    imageAlt: "MindForge puzzle and practice dashboard",
+    imageLabel: "App screenshot",
+    live: null,
+    gradient: "from-violet-600 to-fuchsia-500",
+    icon: "🧩",
+    category: "Interactive Learning",
+  },
   {
     id: 1,
     title: "Loyalty Point Management System",
@@ -89,6 +166,9 @@ export const PROJECTS = [
     ],
     tech: ["CodeIgniter 4", "MySQL", "PHP", "JavaScript"],
     github: "https://github.com/Tonnybraxton/Loyalty-points-system",
+    image: "https://opengraph.githubassets.com/portfolio/Tonnybraxton/Loyalty-points-system",
+    imageAlt: "Loyalty-points-system GitHub repository preview",
+    imageLabel: "Repository preview",
     live: null,
     gradient: "from-blue-600 to-cyan-500",
     icon: "🏆",
@@ -107,6 +187,9 @@ export const PROJECTS = [
     ],
     tech: ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
     github: "https://github.com/Tonnybraxton/real-estate-management",
+    image: "https://opengraph.githubassets.com/portfolio/Tonnybraxton/real-estate-management",
+    imageAlt: "real-estate-management GitHub repository preview",
+    imageLabel: "Repository preview",
     live: null,
     gradient: "from-purple-600 to-pink-500",
     icon: "🏠",
@@ -125,6 +208,9 @@ export const PROJECTS = [
     ],
     tech: ["React", "TypeScript", "Node.js", "Express", "SQL.js"],
     github: "https://github.com/Tonnybraxton/Dawa",
+    image: "https://raw.githubusercontent.com/Tonnybraxton/Dawa/main/Screenshot%202026-08-16%20233359.png",
+    imageAlt: "Dawa Track application interface",
+    imageLabel: "App screenshot",
     live: null,
     gradient: "from-green-600 to-teal-500",
     icon: "💊",
@@ -134,15 +220,18 @@ export const PROJECTS = [
     id: 4,
     title: "Jersey Sport Management System",
     description:
-      "A web-based system for managing sports jersey sales and inventory, designed to streamline business operations and improve stock management efficiency.",
+      "A Kenyan jersey storefront prototype built with Next.js and TypeScript, featuring product imagery, promotional sections, and sample match listings.",
     features: [
       "Product catalogue management",
-      "Customer order processing",
-      "Inventory tracking",
-      "Database record management",
+      "Promotional storefront sections",
+      "Sample match listings",
+      "Responsive product presentation",
     ],
     tech: ["Next.js", "TypeScript", "React", "CSS"],
     github: "https://github.com/Tonnybraxton/JerseySport_KE",
+    image: "https://opengraph.githubassets.com/portfolio/Tonnybraxton/JerseySport_KE",
+    imageAlt: "JerseySport_KE GitHub repository preview",
+    imageLabel: "Repository preview",
     live: null,
     gradient: "from-orange-500 to-amber-500",
     icon: "👕",
@@ -152,20 +241,31 @@ export const PROJECTS = [
     id: 5,
     title: "KicksCultureKE Marketplace",
     description:
-      "A full-stack Kenyan sneaker marketplace with local payments, delivery, seller tools, and a bilingual AI shopping assistant.",
+      "A Kenyan sneaker marketplace prototype with seller tools, M-Pesa integration code, delivery workflows, and a keyword-based shopping assistant.",
     features: [
-      "M-Pesa checkout and buyer protection",
+      "M-Pesa integration code",
       "County-based delivery across Kenya",
       "Seller dashboard and order management",
-      "Sole Score AI shopping assistant",
+      "Keyword-based shopping assistant",
     ],
     tech: ["CodeIgniter 4", "PHP", "MySQL", "M-Pesa Daraja"],
     github: "https://github.com/Tonnybraxton/kickscultureke",
+    image: "https://opengraph.githubassets.com/portfolio/Tonnybraxton/kickscultureke",
+    imageAlt: "kickscultureke GitHub repository preview",
+    imageLabel: "Repository preview",
     live: null,
     gradient: "from-lime-500 to-emerald-600",
     icon: "👟",
     category: "E-Commerce",
   },
+];
+
+// Derived counts stay aligned with the content shown on the page.
+export const STATS = [
+  { label: "Featured Projects", value: PROJECTS.length, suffix: "" },
+  { label: "GitHub Repositories", value: 17, suffix: "" },
+  { label: "Professional Internships", value: 2, suffix: "" },
+  { label: "Skill Areas", value: Object.keys(SKILLS).length, suffix: "" },
 ];
 
 // Experience
@@ -223,10 +323,10 @@ export const NAV_LINKS = [
 
 // Tech icons for hero floating
 export const TECH_ICONS = [
-  { name: "PHP", color: "#777BB4", emoji: "🐘" },
+  { name: "React", color: "#61DAFB", emoji: "⚛️" },
   { name: "Python", color: "#3776AB", emoji: "🐍" },
-  { name: "MySQL", color: "#4479A1", emoji: "🗄️" },
-  { name: "GitHub", color: "#181717", emoji: "🐙" },
-  { name: "HTML", color: "#E34F26", emoji: "🌐" },
-  { name: "CSS", color: "#1572B6", emoji: "🎨" },
+  { name: "PostgreSQL", color: "#336791", emoji: "🗄️" },
+  { name: "GitHub", color: "#A78BFA", emoji: "🐙" },
+  { name: "Next.js", color: "#38BDF8", emoji: "🌐" },
+  { name: "FastAPI", color: "#009688", emoji: "⚡" },
 ];
