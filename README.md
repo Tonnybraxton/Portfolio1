@@ -2,9 +2,15 @@
 
 Configuration scaffold for a personal portfolio website using Next.js, TypeScript, Tailwind CSS, and Framer Motion.
 
+## Preview
+
+![Maaka Braxton Orioki portfolio homepage](docs/screenshots/portfolio-desktop.png)
+
+Captured from the running local portfolio at 1440 × 1000.
+
 ## Current state
 
-This repository contains dependency manifests, framework configuration, and an environment-file example. The portfolio application source is not included: there is no `src`, `app`, or `pages` directory. A working website, screenshots, or live demo are not available from this checkout.
+This repository contains dependency manifests, framework configuration, and an environment-file example. The portfolio application source is not included: there is no `src`, `app`, or `pages` directory. The application cannot be run from this checkout alone. The preview above was captured from the working local project.
 
 ## Included files
 
